@@ -3,7 +3,7 @@
 ***PwshScriptLoader*** is a PowerShell-based graphical user interface (GUI) tool designed to simplify the management and execution of PowerShell scripts.
 It provides an intuitive interface for browsing and running scripts.
 
-In it's current version it will grab a list of all .ps1 powershell scripts in `Resources\Scripts\Themes` and `\Resources\Scripts\Patches`, then lists them in their respective menu.
+In it's current version it will grab a list of all .ps1 powershell scripts in `Resources\Scripts\Themes` and `Resources\Scripts\Patches`, then lists them in their respective menu.
 
 In future versions the menus and directories they look in could be more dynamic.
 # Features
