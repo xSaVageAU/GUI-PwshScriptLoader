@@ -1,6 +1,13 @@
 # Init PowerShell GUI
 Add-Type -AssemblyName System.Windows.Forms
 
+# Get the directory of the current script
+$scriptDirectory = Split-Path -Path $MyInvocation.MyCommand.Definition -Parent
+
+# Define relative paths for the script categories
+$patchesPath = Join-Path -Path $scriptDirectory -ChildPath "Resources\Scripts\Patches"
+$themesPath = Join-Path -Path $scriptDirectory -ChildPath "Resources\Scripts\Themes"
+
 # Create a new form
 $LocalPrinterForm = New-Object System.Windows.Forms.Form
 
@@ -110,12 +117,12 @@ $LocalPrinterForm.Controls.Add($outputBox)
 
 # Add click events to menu items
 $patchesMenuItem.Add_Click({
-    Add-ScriptsToPanel -folderPath "C:\Users\SaVage\Desktop\SavGUI-pwsh\Resources\Scripts\Patches" -panel $scriptPanel
+    Add-ScriptsToPanel -folderPath $patchesPath -panel $scriptPanel
     Highlight-SelectedMenu -selectedMenuItem $patchesMenuItem
 })
 
 $themesMenuItem.Add_Click({
-    Add-ScriptsToPanel -folderPath "C:\Users\SaVage\Desktop\SavGUI-pwsh\Resources\Scripts\Themes" -panel $scriptPanel
+    Add-ScriptsToPanel -folderPath $themesPath -panel $scriptPanel
     Highlight-SelectedMenu -selectedMenuItem $themesMenuItem
 })
 
