@@ -57,7 +57,7 @@ function Create-Buttons {
 $scriptRoot = Split-Path -Parent $MyInvocation.MyCommand.Path
 
 # Set the script directory based on the script location
-$scriptDirectory = Join-Path $scriptRoot "Resources\Scripts"
+$scriptDirectory = Join-Path $scriptRoot "..\Scripts"
 
 # Create the main form
 $form = New-Object System.Windows.Forms.Form
@@ -118,9 +118,9 @@ $runButton.Add_Click({
         
         # Determine which wrapper script to use
         $wrapperScriptPath = if ($notificationCheckbox.Checked) {
-            Join-Path $scriptRoot "Resources\Wrapper\WrapperNotify.ps1"
+            Join-Path $scriptRoot "..\Wrapper\WrapperNotify.ps1"
         } else {
-            Join-Path $scriptRoot "Resources\Wrapper\Wrapper.ps1"
+            Join-Path $scriptRoot "..\Wrapper\Wrapper.ps1"
         }
         $scriptPath = $selectedItem.Tag
 

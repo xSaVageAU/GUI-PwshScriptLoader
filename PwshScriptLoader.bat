@@ -8,4 +8,4 @@ if %errorLevel% neq 0 (
 )
 
 :: If already running as administrator, execute the PowerShell script
-powershell.exe -ExecutionPolicy Bypass -File "%~dp0PwshScriptLoader.ps1"
+powershell.exe -ExecutionPolicy Bypass -File "%~dp0\Resources\GUI\PwshScriptLoader.ps1"
