@@ -1,9 +1,18 @@
 param (
-    [string]$scriptPath
+    [string]$scriptPath,
+    [switch]$showNotification,
+    [switch]$runInBackground,
+    [switch]$keepOpen
 )
 
+# Determine the window style based on the runInBackground checkbox
+$windowStyle = if ($runInBackground) { 'Hidden' } else { 'Normal' }
+
+# Determine if -NoExit should be used
+$noExitParameter = if ($keepOpen) { '-NoExit' } else { '' }
+
 # Start the script process in a new PowerShell window
-$psProcess = Start-Process powershell.exe -ArgumentList "-NoProfile -ExecutionPolicy Bypass -File `"$scriptPath`"" -PassThru
+$psProcess = Start-Process powershell.exe -ArgumentList "-NoProfile $noExitParameter -ExecutionPolicy Bypass -File `"$scriptPath`"" -PassThru -WindowStyle $windowStyle
 
 # Wait for the process to start
 Start-Sleep -Seconds 1
@@ -45,16 +54,22 @@ Add-Type @"
     }
 "@
 
-# Resize the window
-$windowTitle = "Windows PowerShell"  # Adjust if necessary
-[WinAPI]::SetWindowSize($windowTitle, 800, 400)
+# Resize the window if not running in background
+if (-not $runInBackground) {
+    $windowTitle = "Windows PowerShell"  # Adjust if necessary
+    [WinAPI]::SetWindowSize($windowTitle, 800, 400)
+}
 
 # Wait for the script to finish
 $psProcess.WaitForExit()
 
-# Show a message box
-#Add-Type -AssemblyName System.Windows.Forms
-#[System.Windows.Forms.MessageBox]::Show("Script has finished running.", "Script Finished", [System.Windows.Forms.MessageBoxButtons]::OK, [System.Windows.Forms.MessageBoxIcon]::Information)
+# Show a message box if showNotification is checked
+if ($showNotification) {
+    Add-Type -AssemblyName System.Windows.Forms
+    [System.Windows.Forms.MessageBox]::Show("Script has finished running.", "Script Finished", [System.Windows.Forms.MessageBoxButtons]::OK, [System.Windows.Forms.MessageBoxIcon]::Information)
+}
 
-# Close the PowerShell window
-[WinAPI]::CloseWindow($windowTitle)
+# Close the PowerShell window if not running in background and -NoExit is not used
+if (-not $runInBackground -and -not $keepOpen) {
+    [WinAPI]::CloseWindow($windowTitle)
+}

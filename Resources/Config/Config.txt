@@ -1,0 +1,3 @@
+[Folder]Example Folder=Example Folder Description
+[Script]Example Script.ps1=Example Script Description
+[Script]Example Scriptkjghj.ps1=mjbkjh
