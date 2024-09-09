@@ -13,9 +13,11 @@ The GUI script creates lists based on the folders and scripts it can see in the 
   
 * ***Script Management:*** Easily load and view PowerShell scripts from designated folders.
 
-* ***Notifications:*** Includes a checkbox to toggle on or off notifications when scripts are finished running.
+* ***Notifications:*** Includes a checkbox to toggle notifications when scripts are finished running.
   
 * ***Error Output:*** View script execution results and errors in a dedicated output area within the GUI.
+
+* ***Descriptions:*** Customise descriptions from the `Edit Descriptions` menu by right clicking a folder or script.
 # Requirements
 * **Windows with PowerShell**
 
@@ -32,6 +34,10 @@ Select the folder and script you wish to run, then press the `RUN` button to exe
 * Add search script function.
 
 * Include more options and parameters for scripts.
+
+* allow setting custom paths for scripts and folders.
+
+* Allow setting a task schedule for scripts.
 
 # Contributions
 Contributions are welcome
