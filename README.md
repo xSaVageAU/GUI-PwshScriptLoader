@@ -5,8 +5,7 @@ It provides an intuitive interface for browsing and running scripts.
 
 The GUI script creates lists based on the folders and scripts it can see in the `.\Resources\Scripts` directory. Any .ps1 files in those folders will be displayed in its respective list.
 # 
-![image](https://github.com/user-attachments/assets/b249b2ba-c069-47d0-8784-9f8b4f7b70f2)
-
+![image](https://github.com/user-attachments/assets/f436efa2-3e30-4ce0-8568-0a6bf028b598)
 
 
 # Features
